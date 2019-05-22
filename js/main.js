@@ -401,19 +401,10 @@ var profilesKey = 'darksouls3_profiles';
     }
 
     function populateChecklists() {
-        $('.checkbox input[type="checkbox"]')
-            .prop('checked', false)
-            .closest('label')
-            .removeClass('completed')
-            .closest('li').show();
-
+        $('input[type="checkbox"]').prop('checked', false);
         $.each(profiles[profilesKey][profiles.current].checklistData, function(index, value) {
-            $('#' + index)
-                .prop('checked', value)
-                .closest('label')
-                .toggleClass('completed', value);
+            $('#' + index).prop('checked', value);
         });
-
         calculateTotals();
     }
 
