@@ -47,6 +47,11 @@ var profilesKey = 'darksouls3_profiles';
         $('.checkbox input[type="checkbox"]').click(function() {
             var id = $(this).attr('id');
             var isChecked = profiles[profilesKey][profiles.current].checklistData[id] = $(this).prop('checked');
+            $(this).parent().parent().find('li > label > input[type="checkbox"]').each(function() {
+                var id = $(this).attr('id');
+                profiles[profilesKey][profiles.current].checklistData[id] = isChecked;
+                $(this).prop('checked', isChecked);
+            });
             if (isChecked === true) {
               $('[data-id="'+id+'"] label').addClass('completed');
             } else {
@@ -401,10 +406,19 @@ var profilesKey = 'darksouls3_profiles';
     }
 
     function populateChecklists() {
-        $('input[type="checkbox"]').prop('checked', false);
+        $('.checkbox input[type="checkbox"]')
+            .prop('checked', false)
+            .closest('label')
+            .removeClass('completed')
+            .closest('li').show();
+
         $.each(profiles[profilesKey][profiles.current].checklistData, function(index, value) {
-            $('#' + index).prop('checked', value);
+            $('#' + index)
+                .prop('checked', value)
+                .closest('label')
+                .toggleClass('completed', value);
         });
+
         calculateTotals();
     }
 
