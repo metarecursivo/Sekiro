@@ -190,6 +190,7 @@ var profilesKey = 'darksouls3_profiles';
             }
         });
 
+
         $('#profileImport').click(function(){
           $('#fileInput').trigger('click');
         });
