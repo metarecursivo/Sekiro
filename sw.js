@@ -1,5 +1,5 @@
 // The files you want to cache
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'my-site-cache-v2';
 var urlsToCache = [
   '/',
   '/css/main.css',
