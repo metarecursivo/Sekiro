@@ -1,3 +1,16 @@
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // Registration failed
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 var profilesKey = 'darksouls3_profiles';
 
 (function($) {
